@@ -17,7 +17,7 @@ RemoteMon es un sistema completo de monitoreo IoT en tiempo real que integra:
 Permite monitorear dispositivos ESP32, controlar LEDs, configurar umbrales, detectar anomalías, gestionar alarmas y administrar usuarios y permisos.
 
 
-
+```
 iot_backend/
 │
 ├── certs/
@@ -89,6 +89,7 @@ iot_backend/
 ├── docker-compose.yml
 ├── README.md
 └── dynamodb_data/                # Volumen persistente
+```
 
 ## 🔧 ESP32
 
@@ -127,5 +128,6 @@ Juan L. Scardino
 jlscardino.dev@gmail.com
 Proyecto RemoteMon  
 2025
+
 
 
