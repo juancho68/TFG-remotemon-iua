@@ -126,8 +126,8 @@ iot_backend/
 
 Juan L. Scardino  
 jlscardino.dev@gmail.com
-Proyecto RemoteMon  
-2025
+Proyecto RemoteMon - 2025
+
 
 
 
