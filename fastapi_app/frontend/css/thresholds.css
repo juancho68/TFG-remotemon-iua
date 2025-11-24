@@ -1,0 +1,96 @@
+/* ============================
+    Estilos para Umbrales
+   ============================ */
+
+.thresholds-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.selector-block {
+  margin-bottom: 20px;
+}
+
+.selector-block select {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+/* === Tarjeta principal === */
+.threshold-card {
+  background: var(--color-card-bg);
+  padding: 25px 30px;
+  border-radius: 14px;
+  border: 1px solid #e1e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin-top: 20px;
+}
+
+.threshold-card h3 {
+  margin-bottom: 18px;
+  font-size: 20px;
+  color: #333;
+}
+
+/* === Grid de inputs === */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 25px;
+  margin-bottom: 20px;
+}
+
+.field label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.field input {
+  width: 240px;
+  padding: 6px 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* === Botón guardar === */
+.btnSaveThresholds {
+  display: block;
+  width: fit-content;
+  padding: 10px 20px;
+  background: var(--color-accent);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 auto; /* centrado */
+  transition: background 0.2s ease;
+}
+
+.btnSaveThresholds:hover {
+  background: #00916e;
+}
+
+/* === Mensaje === */
+.threshold-message {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+  color: #444;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .field input {
+    width: 100%;
+  }
+}

@@ -1,0 +1,73 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RemoteMon - Acceso</title>
+  <link rel="icon" type="image/ico" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+  <script src="js/config.js"></script>
+</head>
+
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <img src="img/RemoteMon.png" alt="RemoteMon" class="auth-logo" />
+
+      <!-- LOGIN -->
+      <div id="loginForm" class="auth-section card">
+        <h3>Iniciar sesión</h3>
+
+        <input type="email" id="email" placeholder="Correo electrónico" />
+        <input type="password" id="password" placeholder="Contraseña" />
+
+        <button id="btnLogin" class="btn-primary">Entrar</button>
+        <p id="msg" class="msg"></p>
+
+        <div class="auth-links">
+          <a href="#" id="linkRegister">Crear cuenta</a>
+          <span>•</span>
+          <a href="#" id="linkReset">Olvidé mi contraseña</a>
+        </div>
+      </div>
+
+      <!-- REGISTRO -->
+      <div id="registerForm" class="auth-section card hidden">
+        <h3>Crear cuenta</h3>
+
+        <input type="email" id="regEmail" placeholder="Correo electrónico" autocomplete="email" />
+        <input type="password" id="regPassword" placeholder="Contraseña" autocomplete="password" />
+
+        <button id="btnRegister" class="btn-primary">Registrarme</button>
+        <p id="msgReg" class="msg"></p>
+
+        <div class="auth-links">
+          <a href="#" id="linkLoginFromReg">← Volver al inicio</a>
+        </div>
+      </div>
+
+      <!-- RESET -->
+      <div id="resetForm" class="auth-section card hidden">
+        <h3>Restablecer contraseña</h3>
+
+        <input type="email" id="resetEmail" placeholder="Correo electrónico" />
+        <button id="btnReset" class="btn-primary">Enviar correo</button>
+
+        <p id="msgReset" class="msg"></p>
+
+        <div class="auth-links">
+          <a href="#" id="linkLoginFromReset">← Volver</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

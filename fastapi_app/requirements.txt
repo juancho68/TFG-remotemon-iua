@@ -1,0 +1,16 @@
+fastapi[all]
+python-jose[cryptography]
+bcrypt==3.2.2 
+passlib[bcrypt]==1.7.4
+uvicorn[standard]
+aioboto3
+boto3
+pydantic
+scikit-learn
+numpy
+paho-mqtt
+asyncio-mqtt
+aiomqtt==2.1.0
+# aiomqtt
+aiofiles
+awsiotsdk

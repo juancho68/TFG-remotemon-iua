@@ -1,0 +1,189 @@
+/* ============================================================
+    DASHBOARD GRID
+   ============================================================ */
+.grid-devices {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* ============================================================
+    DEVICE CARD
+   ============================================================ */
+.device-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.device-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.device-card h3 {
+  color: var(--color-primary);
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+/* ============================================================
+    LED INDICATORS
+   ============================================================ */
+.led-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 12px 0;
+}
+
+.led {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  background: #222;
+  box-shadow: inset 0 0 5px #000;
+  transition: 0.25s ease;
+}
+
+.led-red.on {
+  background: #ff2b2b;
+  box-shadow: 0 0 12px #ff2b2b, inset 0 0 4px #000;
+}
+
+.led-red.off {
+  background: #2a0000;
+}
+
+.led-green.on {
+  background: #00ff66;
+  box-shadow: 0 0 12px #00ff66, inset 0 0 4px #000;
+}
+
+.led-green.off {
+  background: #003300;
+}
+
+/* ============================================================
+    BUTTONS LED
+   ============================================================ */
+.btn-led {
+  width: 110px;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  margin: 6px 4px;
+  background: linear-gradient(to bottom, #0078d7, #005fa3);
+  transition: transform 0.15s ease;
+}
+
+.btn-led:hover {
+  transform: scale(1.05);
+  background: linear-gradient(to bottom, #008eff, #004c8a);
+}
+
+/* ============================================================
+    CONNECTION STATE DOT
+   ============================================================ */
+.dot {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.green { background: #00cc44; }
+.dot.red   { background: #cc0000; }
+.dot.gray  { background: #999; }
+
+.reconnect-btn {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #f1c40f;
+  color: black;
+  cursor: pointer;
+}
+
+.reconnect-btn:hover {
+  background: #f39c12;
+}
+/* === LED indicators (FINAL & FIXED) === */
+.led {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  box-shadow: inset 0 0 6px #000;
+  background-color: #222;
+  transition: all 0.25s ease-in-out;
+}
+
+/*  LED ROJO */
+.led-red.on {
+  background-color: #ff2b2b;
+  box-shadow: 0 0 15px 4px #ff2b2b, inset 0 0 4px #000;
+}
+.led-red.off {
+  background-color: #2a0000;
+  box-shadow: inset 0 0 6px #000;
+}
+
+/*  LED VERDE */
+.led-green.on {
+  background-color: #00ff66;
+  box-shadow: 0 0 15px 4px #00ff66, inset 0 0 4px #000;
+}
+.led-green.off {
+  background-color: #002a00;
+  box-shadow: inset 0 0 6px #000;
+}
+
+/* ============================================
+   Botones LED — versión estable y estilizada
+   ============================================ */
+
+.btn-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-led {
+  padding: 8px 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  background: linear-gradient(to bottom, #0078d7, #005fa3);
+  transition: all 0.2s ease;
+  min-width: 110px;
+}
+
+.btn-led:hover {
+  background: linear-gradient(to bottom, #008af0, #004c8a);
+  transform: translateY(-2px);
+}
+
+main {
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.grid-devices {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 22px;
+  margin-top: 20px;
+}

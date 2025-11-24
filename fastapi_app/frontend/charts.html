@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RemoteMon - Gráficos</title>
+  <link rel="icon" type="image/ico" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/charts.css">
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+  <script src="js/ws_client.js"></script>
+  <script src="js/charts.js" defer></script>
+  <script src="js/nav-active.js" defer></script>
+</head>
+
+<body>
+  <!-- === HEADER GLOBAL === -->
+  <header  class="header-light">
+    <div class="brand">
+      <img src="img/favicon_64x64.png" class="brand-icon" alt="RemoteMon">
+      <span class="rm-dark">Remote</span><span class="rm-light">Mon</span>
+    </div>
+
+
+    <span id="menuToggle" class="menu-toggle">☰</span>
+
+    <nav class="nav-center">
+      <a href="dashboard.html" id="navDashboard">Dashboard</a>
+      <a href="charts.html" id="navCharts">Gráficos</a>
+      <a href="thresholds.html" id="navThresholds">Umbrales</a>
+      <a href="alarms.html" id="navAlarms">Alarmas</a>
+      <a href="admin.html" id="navAdmin">Panel Admin</a>
+    </nav>
+
+    <div class="user-area">
+      <span id="userInfo"></span>
+      <button id="btnLogout" class="btnLogout">Salir</button>
+    </div>
+  </header>
+
+
+  <!-- === CONTENIDO === -->
+  <main>
+    <h2>📊 Panel de Sensores</h2>
+
+  <div class="filters-box">
+    
+    <div class="filter-item">
+      <label>Dispositivo:</label>
+      <select id="deviceSelect"></select>
+    </div>
+
+    <div class="filter-item">
+      <label>Muestras:</label>
+      <select id="sampleSelect">
+        <option>50</option>
+        <option>100</option>
+        <option>200</option>
+        <option>500</option>
+        <option>1000</option>
+      </select>
+    </div>
+
+    <div class="filter-item">
+      <label>Desde:</label>
+      <input type="datetime-local" id="sinceInput">
+    </div>
+
+    <div class="filter-item">
+      <label>Hasta:</label>
+      <input type="datetime-local" id="untilInput">
+    </div>
+
+    <button id="btnReload">🔄 Recargar</button>
+    <span id="clockDisplay" class="clock"></span>
+
+  </div>
+
+
+    <div id="chartsContainer"></div>
+  </main>
+
+  <footer>
+    RemoteMon © 2025 — Monitoreo IoT en tiempo real.
+  </footer>
+</body>
+</html>

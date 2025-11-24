@@ -1,0 +1,183 @@
+/* ===============================
+   ALARMS PAGE
+================================*/
+
+.container {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+/* ===== FILTROS ===== */
+
+.filters-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.filter-group input,
+.filter-group select {
+  margin-top: 6px;
+  padding: 7px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ===== BOTONES ===== */
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background: #f0f0f0;
+  color: #333;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  background: #e5e5e5;
+}
+
+/* ========================
+   ALARMS TABLE
+=========================== */
+
+#alarmsTable {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+#alarmsTable th {
+  background: var(--color-primary);
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+#alarmsTable td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+#alarmsTable tr:hover {
+  background: #f3f7ff;
+}
+
+.no-data {
+  text-align: center;
+  color: gray;
+  padding: 20px;
+  font-size: 15px;
+}
+
+/* COLORES DE ALERTAS */
+.alarm-high {
+  color: var(--color-danger);
+  font-weight: bold;
+}
+
+.alarm-low {
+  color: #ff9900;
+  font-weight: bold;
+}
+
+/* =============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 768px) {
+  .filters-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-group {
+    width: 100%;
+  }
+
+  .filter-buttons {
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 480px) {
+  .filters-card {
+    padding: 15px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .filter-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+/* ============================
+   CLOCK UTC
+============================= */
+
+.clock-utc {
+  margin-top: -10px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #555;
+  font-weight: 600;
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .clock-utc {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+}

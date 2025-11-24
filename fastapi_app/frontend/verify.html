@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificación de cuenta</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>📨 Verificando tu cuenta...</h2>
+    <p id="msg">Por favor esperá un momento...</p>
+  </div>
+
+  <script>
+    async function verifyEmail() {
+      const params = new URLSearchParams(window.location.search);
+      const token = params.get("token");
+      const msg = document.getElementById("msg");
+
+      if (!token) {
+        msg.textContent = "❌ Token no encontrado. Verificá tu enlace.";
+        return;
+      }
+
+      try {
+        const res = await fetch(`/api/verify-email?token=${token}`);
+        const data = await res.json();
+        if (res.ok) {
+          msg.innerHTML = `✅ ${data.detail || "Cuenta verificada con éxito"}<br><br>
+          <button onclick="location.href='index.html'">Ir al inicio</button>`;
+        } else {
+          msg.textContent = `❌ ${data.detail || "Error al verificar el correo"}`;
+        }
+      } catch (err) {
+        msg.textContent = "❌ Error de conexión con el servidor.";
+      }
+    }
+
+    verifyEmail();
+  </script>
+</body>
+</html>

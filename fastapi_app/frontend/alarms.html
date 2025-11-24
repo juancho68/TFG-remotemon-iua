@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RemoteMon - Alarmas</title>
+  <link rel="icon" type="image/ico" href="img/favicon.ico">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/alarms.css">
+  <script src="js/config.js"></script>
+  <script src="js/nav-active.js" defer></script>
+  <script src="js/alarms.js" defer></script>
+</head>
+
+<body>
+
+  <!-- === HEADER GLOBAL (Navbar) === -->
+  <header class="header-light">
+    <div class="brand">
+      <img src="img/favicon_64x64.png" class="brand-icon" alt="RemoteMon">
+      <span class="rm-dark">Remote</span><span class="rm-light">Mon</span>
+    </div>
+
+    <span id="menuToggle" class="menu-toggle">☰</span>
+
+    <nav class="nav-center">
+      <a href="dashboard.html" id="navDashboard">Dashboard</a>
+      <a href="charts.html" id="navCharts">Gráficos</a>
+      <a href="thresholds.html" id="navThresholds">Umbrales</a>
+      <a href="alarms.html" id="navAlarms">Alarmas</a>
+      <a href="admin.html" id="navAdmin">Panel Admin</a>
+    </nav>
+
+    <div class="user-area">
+      <span id="userInfo"></span>
+      <button id="btnLogout" class="btnLogout">Salir</button>
+    </div>
+  </header>
+
+  <!-- === CONTENEDOR PRINCIPAL === -->
+  <main class="container">
+
+    <h2>📢 Alarmas del sistema</h2>
+    <div id="clockUTC" class="clock-utc"></div>
+
+    <!-- FILTROS -->
+    <div class="filters-card">
+
+      <div class="filter-group">
+        <label>Dispositivo:
+          <select id="deviceSelect">
+            <option value="">Todos</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <label>Desde:
+          <input type="datetime-local" id="dateFrom">
+        </label>
+      </div>
+
+      <div class="filter-group">
+        <label>Hasta:
+          <input type="datetime-local" id="dateTo">
+        </label>
+      </div>
+
+      <div class="filter-buttons">
+        <button id="btnFilter" class="btn-primary">Filtrar</button>
+        <button id="btnClear" class="btn-secondary">Limpiar</button>
+      </div>
+
+    </div>
+
+    <!-- TABLA DE ALARMAS -->
+    <div id="alarmsContainer">
+      <table id="alarmsTable">
+        <thead>
+          <tr>
+            <th>Fecha</th>
+            <th>Dispositivo</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Umbral</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody id="alarmsBody"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <footer>
+    RemoteMon © 2025 — Monitoreo IoT en tiempo real.
+  </footer>
+
+</body>
+</html>

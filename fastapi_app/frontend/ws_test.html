@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TEST WS LED</title>
+</head>
+<body>
+  <h1>💡 Test WebSocket – LED Rojo esp32_01</h1>
+
+  <button id="btnToggleRed">🔴 Toggle LED Rojo</button>
+
+  <p id="log"></p>
+
+  <script src="/js/ws_client.js"></script>
+  <script>
+    const log = (msg) => {
+      document.getElementById("log").innerHTML += msg + "<br>";
+      console.log(msg);
+    };
+
+    // Escuchar actualizaciones del WS
+    WSClient.on("device_update", (msg) => {
+      log("🔔 WS device_update recibido:");
+      log(JSON.stringify(msg));
+    });
+
+    // Botón que envía comando al backend
+    document.getElementById("btnToggleRed").onclick = async () => {
+      log("📤 Enviando toggle LED rojo vía HTTP...");
+
+      try {
+        const res = await fetch("/api/devices/esp32_01/led/rojo", {
+          method: "POST",
+          headers: {
+            "Authorization": "Bearer " + localStorage.getItem("token")
+          }
+        });
+
+        const txt = await res.text();
+        log("🔙 Respuesta backend: " + txt);
+      } catch (e) {
+        log("❌ ERROR enviando comando: " + e);
+      }
+    };
+  </script>
+
+</body>
+</html>

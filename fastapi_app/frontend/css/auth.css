@@ -1,0 +1,88 @@
+/* ============================
+    Estilos Login/Register
+   ============================ */
+
+.auth-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--color-bg);
+  padding: 20px;
+}
+
+.auth-card {
+  background: white;
+  padding: 30px 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+}
+
+/* Logo */
+.auth-logo {
+  width: 220px;
+  margin-bottom: 10px;
+}
+
+/* Secciones (login / registro / reset) */
+.auth-section {
+  margin-top: 10px;
+}
+
+/* La clase .hidden ya existe en style.css y hace display:none */
+.msg {
+  margin-top: 8px;
+  min-height: 18px;
+  font-size: 0.9rem;
+}
+
+/* Inputs */
+.auth-card input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.auth-card input:focus {
+  outline: 2px solid var(--color-primary);
+}
+
+/* Botón principal */
+.btn-primary {
+  width: 100%;
+  padding: 10px;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+/* Links inferiores */
+.auth-links {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.auth-links a {
+  color: var(--color-primary-dark);
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}

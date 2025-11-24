@@ -1,0 +1,134 @@
+/* =====================================================
+    CHARTS — Versión estable y responsiva
+   ===================================================== */
+
+main {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+/* Título */
+main h2 {
+  color: #0059b3;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+
+/* =====================================================
+    PANEL DE FILTROS — versión refinada y responsiva
+   ===================================================== */
+
+.filters-box {
+  background: #ffffff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+
+  align-items: flex-end;
+}
+
+.filters-box .filter-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+.filters-box label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.filters-box select,
+.filters-box input[type="datetime-local"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  background: #fff;
+  font-size: 14px;
+}
+
+/* Botón recargar */
+#btnReload {
+  padding: 8px 16px;
+  background: #0078d7;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  white-space: nowrap;
+}
+#btnReload:hover {
+  background: #005fa3;
+}
+
+/* Reloj */
+.clock {
+  font-weight: bold;
+  color: #333;
+  white-space: nowrap;
+  padding-bottom: 8px;
+}
+
+/* -------------------------
+   📱 Responsive mejorado
+   ------------------------- */
+
+@media (max-width: 720px) {
+  .filters-box {
+    gap: 12px;
+  }
+  .filters-box .filter-item {
+    min-width: 100%;
+  }
+  #btnReload {
+    width: 100%;
+  }
+  .clock {
+    width: 100%;
+    text-align: right;
+  }
+}
+
+
+/* =====================================================
+    CONTENEDOR DE GRÁFICOS
+   ===================================================== */
+
+#chartsContainer {
+  margin-top: 25px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  min-height: 350px; /* asegura espacio visible */
+}
+
+/* Controles */
+.chart-controls {
+  background: #f6f7f9;
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.chart-controls label {
+  margin-right: 15px;
+}
+
+/* Canvas estable */
+canvas {
+  width: 100% !important;
+  max-width: 1100px;
+  height: 330px !important;
+  display: block;
+  margin: 20px auto;
+}

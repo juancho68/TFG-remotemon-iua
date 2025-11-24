@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>WS Test</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #0f0; padding: 20px; }
+    #log { white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h2>WebSocket Test</h2>
+  <div id="log"></div>
+  <script>
+    const log = txt => {
+      const el = document.getElementById("log");
+      el.textContent += txt + "\n";
+    };
+
+    const token = "<JWT_REAL>"; // <-- reemplazá con token real
+    const device = "esp32_01";
+    const ws = new WebSocket(`ws://localhost:8080/ws?token=${token}&devices=${device}`);
+
+    ws.onopen = () => log("✅ Conectado al WS...");
+    ws.onmessage = e => {
+      log("📡 Mensaje: " + e.data);
+      try {
+        const msg = JSON.parse(e.data);
+        if (msg.type === "status") {
+          log(`🟢 Estado actualizado: ${JSON.stringify(msg.status)}`);
+        }
+      } catch (err) {
+        log("⚠️ No se pudo parsear JSON");
+      }
+    };
+    ws.onerror = e => log("❌ Error WS: " + e.message);
+    ws.onclose = () => log("🔌 Conexión cerrada");
+  </script>
+</body>
+</html>

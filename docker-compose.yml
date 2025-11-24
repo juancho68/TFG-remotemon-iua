@@ -1,0 +1,54 @@
+version: "3.8"
+
+services:
+  fastapi:
+    build: ./fastapi_app
+    container_name: fastapi_iot
+    ports:
+      - "8080:8000"
+    environment:
+      # AWS IoT Core
+      - AWS_IOT_ENDPOINT=${AWS_IOT_ENDPOINT}
+      - AWS_CERT_PATH=${AWS_CERT_PATH}
+      - AWS_KEY_PATH=${AWS_KEY_PATH}
+      - AWS_ROOT_CA_PATH=${AWS_ROOT_CA_PATH}
+
+      # DynamoDB config (local o AWS)
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}
+      - DYNAMODB_ENDPOINT=${DYNAMODB_ENDPOINT}
+
+      # Tablas DynamoDB
+      - DATA_TABLE_NAME=${DATA_TABLE_NAME}
+      - STATUS_TABLE_NAME=${STATUS_TABLE_NAME}
+      - THRESHOLDS_TABLE_NAME=${THRESHOLDS_TABLE_NAME}
+      - USERS_TABLE_NAME=${USERS_TABLE_NAME}
+      - ALARM_LOG_TABLE=${ALARM_LOG_TABLE}
+
+      # SMTP config
+      - SMTP_SERVER=${SMTP_SERVER}
+      - SMTP_PORT=${SMTP_PORT}
+      - SMTP_USER=${SMTP_USER}
+      - SMTP_PASS=${SMTP_PASS}
+    volumes:
+      - ./certs:/certs:ro
+    depends_on:
+      - dynamodb-local
+    networks:
+      - iot_net
+
+  dynamodb-local:
+    image: amazon/dynamodb-local
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    command: "-jar DynamoDBLocal.jar -sharedDb"
+    volumes:
+      - ./dynamodb_data:/home/dynamodblocal/data
+    networks:
+      - iot_net
+
+networks:
+  iot_net:
+    driver: bridge

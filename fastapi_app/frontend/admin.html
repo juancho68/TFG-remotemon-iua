@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>RemoteMon - Panel Admin</title>
+
+  <link rel="icon" type="image/ico" href="/img/favicon.ico">
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/admin.css">
+
+  <script src="/js/config.js"></script>
+  <script src="/js/nav-active.js" defer></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/admin.js" defer></script>
+</head>
+
+<body>
+
+<header class="header-light">
+  <div class="brand">
+    <img src="/img/favicon_64x64.png" class="brand-icon">
+    <span class="rm-dark">Remote</span><span class="rm-light">Mon</span>
+  </div>
+
+  <nav class="nav-center">
+    <a href="dashboard.html">Dashboard</a>
+    <a href="charts.html">Gráficos</a>
+    <a href="thresholds.html">Umbrales</a>
+    <a href="alarms.html">Alarmas</a>
+    <a href="admin.html" id="navAdmin">Panel Admin</a>
+  </nav>
+
+  <div class="user-area">
+    <span id="userInfo"></span>
+    <button id="btnLogout" class="btnLogout">Salir</button>
+  </div>
+</header>
+
+<main>
+  <div class="admin-container">
+
+    <h2>⚙️ Panel de Administración</h2>
+
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="usuarios">Usuarios</button>
+      <button class="tab-btn" data-tab="dispositivos">Dispositivos</button>
+      <button class="tab-btn" data-tab="permisos">Permisos</button>
+      <button class="tab-btn" data-tab="umbrales">Umbrales</button>
+      <button class="tab-btn" data-tab="notificaciones">Notificaciones</button>
+      <button class="tab-btn" data-tab="ajustes">Ajustes Globales</button>
+    </div>
+
+    <div id="tabContent">
+
+      <!-- === USUARIOS === -->
+      <section id="usuarios" class="tab active">
+        <h3>👥 Gestión de Usuarios</h3>
+
+        <div class="user-actions card">
+          <h4>➕ Crear nuevo usuario</h4>
+          <input id="newEmail" type="email" placeholder="Correo" />
+          <input id="newPass" type="password" placeholder="Contraseña" />
+          <select id="newRole">
+            <option value="user">Usuario</option>
+            <option value="admin">Administrador</option>
+          </select>
+          <button id="btnAddUser" class="btn-primary">Crear</button>
+        </div>
+
+        <table id="tblUsuarios" class="table-modern">
+          <thead>
+            <tr><th>Email</th><th>Rol</th><th>Acciones</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- === DISPOSITIVOS === -->
+      <section id="dispositivos" class="tab">
+        <h3>📟 Dispositivos registrados</h3>
+        <table id="tblDispositivos" class="table-modern">
+          <thead><tr><th>ID</th><th>Nombre</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <!-- === PERMISOS === -->
+      <section id="permisos" class="tab">
+        <h3>🔑 Permisos por usuario</h3>
+
+        <label>Usuario:</label>
+        <select id="selUsuarioPerm"></select>
+
+        <table id="tblPermisos" class="table-modern">
+          <thead>
+            <tr>
+              <th>Dispositivo</th>
+              <th>Leer</th>
+              <th>Escribir</th>
+              <th>LED Verde</th>
+              <th>LED Rojo</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+
+        <button id="btnGuardarPermisos" class="btn-primary">💾 Guardar permisos</button>
+      </section>
+
+      <!-- === UMBRALES === -->
+      <section id="umbrales" class="tab">
+        <h3>⚙️ Umbrales</h3>
+
+        <div class="selectors">
+          <label>Usuario:</label>
+          <select id="selUsuarioUmbrales"></select>
+
+          <label>Dispositivo:</label>
+          <select id="selDispositivoUmbrales"></select>
+        </div>
+
+        <div id="umbralesCard" class="card" style="display:none;">
+          <h4>Configuración</h4>
+          <div class="input-grid">
+            <label>Temp Min:</label> <input id="tempMin" type="number" step="0.1">
+            <label>Temp Max:</label> <input id="tempMax" type="number" step="0.1">
+            <label>Hum Min:</label> <input id="humMin" type="number" step="0.1">
+            <label>Hum Max:</label> <input id="humMax" type="number" step="0.1">
+          </div>
+          <button id="btnGuardarUmbrales" class="btn-primary">💾 Guardar</button>
+          <p id="msgUmbrales" class="msg"></p>
+        </div>
+      </section>
+
+      <!-- === NOTIFICACIONES === -->
+      <section id="notificaciones" class="tab">
+        <h3>🔔 Notificaciones por usuario</h3>
+
+        <div class="selectors">
+          <label>Usuario:</label>
+          <select id="selUsuarioNotificaciones"></select>
+
+          <label>Dispositivo:</label>
+          <select id="selDispositivoNotificaciones"></select>
+        </div>
+
+        <div id="notificacionesCard" class="card" style="display:none;">
+          <div class="input-grid">
+            <label>Temp:</label> <input id="notifTemp" type="checkbox">
+            <label>Hum:</label> <input id="notifHum" type="checkbox">
+            <label>Email:</label> <input id="notifEmail" type="checkbox">
+          </div>
+
+          <button id="btnGuardarNotificaciones" class="btn-primary">💾 Guardar</button>
+        </div>
+      </section>
+
+      
+  <!-- AJUSTES GLOBALES -->
+  <section id="ajustes" class="tab">
+    <h3>🌐 Ajustes Globales de Alarmas</h3>
+
+    <div class="global-alarms-card">
+
+      <h4>⏱ Cooldown Global</h4>
+
+      <div class="global-alarms-row">
+        <label for="cooldownGlobal">Minutos:</label>
+        <input id="cooldownGlobal" type="number" min="1" step="1">
+      </div>
+
+      <button id="btnGuardarCooldown" class="btn-primary btn-save-global">
+        💾 Guardar
+      </button>
+
+      <hr style="margin:25px 0;">
+
+      <h4>♻️ Resetear todas las alarmas</h4>
+
+      <button id="btnResetGlobal" class="btn-warning btn-save-global">
+        ♻️ Resetear Alarmas Globales
+      </button>
+
+    </div>
+  </section>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  RemoteMon © 2025 — Monitoreo IoT en tiempo real.
+</footer>
+
+</body>
+</html>
